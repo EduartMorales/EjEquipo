@@ -5,6 +5,7 @@
 package Logica_Cliente;
 
 import Helpers.HelperImpresion;
+import Helpers.HelperValidacion;
 import Logica_Negocio.Equipo;
 import Logica_Negocio.Jugador;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class Main {
         Jugador objJugador;
         Equipo objEquipo;
         ArrayList<Equipo> listaequipos= new ArrayList<>();
+        int rta, conteo;
        
         do{
             System.out.println("1. Registrar jugadores");
@@ -67,16 +69,103 @@ public class Main {
                      
                       for (int i = 0; i < num_jugadores; i++) {
                          
-                          System.out.println("Digite el nomnre del jugador");
+                          System.out.println("Digite el nombre del jugador");
                           Nombre=scan.nextLine();
+                          rta=HelperValidacion.ValidarVacio(Nombre);
+                          
+                          while (rta > 0) {                              
+                             System.out.println("Digite el nombre del jugador");
+                             Nombre = scan.nextLine();
+                             rta = HelperValidacion.ValidarVacio(Nombre);
+                          }
+                          
+                          conteo = HelperValidacion.ValidarTodo(Nombre);
+                          
+                          while (conteo != 0) {                              
+                             System.out.println("Digite el nombre del jugador");
+                             Nombre = scan.nextLine();
+                             conteo = HelperValidacion.ValidarTodo(Nombre);
+                          }
+                          
+                          //Termina Nombre de jugadores
+                          
                           System.out.println("Digite el apellido del jugador");
                           Apellido=scan.nextLine();
+                          rta = HelperValidacion.ValidarVacio(Apellido);
+                          
+                          while (rta > 0) {                              
+                             System.out.println("Digite el apellido del jugador");
+                             Apellido=scan.nextLine();
+                             rta = HelperValidacion.ValidarVacio(Apellido);
+                          }
+                          
+                          conteo = HelperValidacion.ValidarTodo(Apellido);
+                          
+                          while (conteo != 0) {
+                             System.out.println("Digite el apellido del jugador");
+                             Nombre = scan.nextLine();
+                             conteo = HelperValidacion.ValidarTodo(Apellido);
+                        }
+
+                          // Termina Apellido
+                          
                           System.out.println("Digite el id del jugador");
                           id=scan.nextLine();
+                          rta = HelperValidacion.ValidarVacio(id);
+                          
+                          while (rta > 0) {                              
+                             System.out.println("Digite el id del jugador");
+                             id=scan.nextLine();
+                             rta = HelperValidacion.ValidarVacio(id);
+                          }
+                          
+                          conteo = HelperValidacion.ValidarTodoSerial(id);
+                          
+                          while (conteo != 0) {                              
+                             System.out.println("Digite el id del jugador");
+                             id = scan.nextLine();
+                             conteo = HelperValidacion.ValidarTodoSerial(id);
+                          }
+                          
+                          // Termina id
+                          
                           System.out.println("Digite la posicion del jugador");
                           Posicion=scan.nextLine();
+                          rta = HelperValidacion.ValidarVacio(Posicion);
+                          
+                          while (rta > 0) {                              
+                              System.out.println("Digite la posicion del jugador");
+                              Posicion=scan.nextLine();
+                              rta = HelperValidacion.ValidarVacio(Posicion);
+                          }
+                          
+                          conteo = HelperValidacion.ValidarTodo(Posicion);
+                          
+                          while (conteo != 0) {                              
+                              System.out.println("Digite la posicion del jugador");
+                              Posicion=scan.nextLine();
+                              conteo = HelperValidacion.ValidarTodo(Posicion);
+                          }
+                          
+                          // Termina Posicion
+                          
                           System.out.println("Digite el numero de la camisa del jugador");
                           num_camisa=scan.nextInt();
+                          rta = (num_camisa == 0)? 1:0;
+                          
+                          while (rta > 0) {                              
+                              System.out.println("Digite el numero de la camisa del jugador");
+                              num_camisa=scan.nextInt();
+                              rta = (num_camisa == 0)? 1:0;
+                          }
+                          
+                          conteo = HelperValidacion.ValidarCantidadRango(num_camisa);
+                          
+                          while (conteo == 0) {                              
+                              System.out.println("Digite el numero de la camisa del jugador");
+                              num_camisa=scan.nextInt();
+                              conteo = HelperValidacion.ValidarCantidadRango(num_camisa);
+                          }
                          
                           scan.nextLine();
                          
@@ -100,7 +189,7 @@ public class Main {
                  case 3:
                      break;
              }
-           
+ 
            
         }while(opc!=3);
     }
